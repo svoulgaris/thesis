@@ -1,17 +1,17 @@
-./*/*.class
-./*/*.log
+projects/*/*.class
+projects/*/*.log
 
 # sbt specific
-./*/.cache
-./*/.history
-./*/.lib/
-./*/dist/*
-./*/target/
-./*/lib_managed/
-./*/src_managed/
-./*/project/boot/
-./*/project/plugins/project/
+projects/*/.cache
+projects/*/.history
+projects/*/.lib/
+projects/*/dist/*
+projects/*/target/
+projects/*/lib_managed/
+projects/*/src_managed/
+projects/*/project/boot/
+projects/*/project/plugins/project/
 
 # Scala-IDE specific
-./*/.scala_dependencies
-./*/.worksheet
+projects/*/.scala_dependencies
+projects/*/.worksheet
