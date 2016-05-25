@@ -20,18 +20,14 @@ object AvgClusteringCoeff {
 
     val coeffs = graph.collectNeighbors(EdgeDirection.Either).collect.map { case (id, neighboors) => (1, {
 
-      var count = 0
-      var total = 0
-      for (nb <- neighboors) {
-        for (nb2 <- neighboors) {
-          if (nb._1 != nb2._1) {
-            total += 1
-            count += graph.triplets.filter(t => t.srcId == nb._1).filter(t => t.dstId == nb2._1).count.toInt
-          }
-        }
-      }
-      total = total/2
-      var coeff = count.toFloat/total
+      var edges = graph.triplets
+        .filter(t => neighboors.toList.exists(x => x._1 == t.srcId))
+        .filter(t => neighboors.toList.exists(x => x._1 == t.dstId))
+        .count.toInt
+
+      var count = neighboors.toList.length
+
+      var coeff = 2 * edges.toFloat / (count * (count-1))
       println(s"Clustering Coefficient for vertex $id is: $coeff")
 
       coeff
